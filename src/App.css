@@ -2,6 +2,11 @@ h1,h3{
     font-family: 'Raleway', sans-serif;;
 }
 
+p{
+    font-family: 'Raleway';
+    margin: 8px;
+}
+
 .HomeBox{
     background-color: #A09389;
     margin-left: 5px;

@@ -48,6 +48,10 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     task.HLA = event.target.value;
   };
 
+  const handleCancle = () => {
+    navigate("/home");
+  };
+
   const [imageUrl, setImageUrl] = useState(null);
 
   const handleFileUpload = (event) => {
@@ -109,14 +113,15 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       </Button>
       <br />
       <br />
-        <Button
-          type="submit"
-          variant="contained"
-          //disabled={task.title === "" || task.body === ""}
-          style={{ color: "white", backgroundColor: "#ab8f4f" }}
-        >
-          Create new task
-        </Button>
+      <Button onClick={handleCancle}>Cancle</Button>
+      <Button
+        type="submit"
+        variant="contained"
+        //disabled={task.title === "" || task.body === ""}
+        style={{ color: "white", backgroundColor: "#362d24" }}
+      >
+        Create new task
+      </Button>
     </form>
   );
 };
