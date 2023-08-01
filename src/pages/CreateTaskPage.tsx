@@ -13,8 +13,8 @@ function CreateTaskPage() {
   );
 
   return (
-    <div>
-      <h1>Create New Task</h1>
+    <div class = "NewTaskBox">
+      <h1 class = "MainText">Create New Task</h1>
       <AddTask saveTask={saveTask} />
     </div>
   );

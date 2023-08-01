@@ -109,10 +109,6 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       </Button>
       <br />
       <br />
-      <button
-        //disabled={task.title === "" || task.body === ""}
-        style={{ backgroundColor: "white", border: "none" }}
-      >
         <Button
           type="submit"
           variant="contained"
@@ -121,7 +117,6 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
         >
           Create new task
         </Button>
-      </button>
     </form>
   );
 };

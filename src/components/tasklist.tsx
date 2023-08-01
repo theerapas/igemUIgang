@@ -11,8 +11,8 @@ function TaskList() {
 
   return (
     <>
-      <div>
-        <h1>Task List</h1>
+      <div class = "HomeBox">
+        <h1 class = "InBoxText">Task List</h1>
         {tasks.map((task: ITask) => (
           <Task key={task.id} task={task} removeTask={removeTask} />
         ))}

@@ -6,11 +6,13 @@ function ResultPage() {
   const { task } = location.state;
 
   return (
-    <div>
+    <div class="Result">
       <h1>Result is here!</h1>
+      <div class="ResultDetail">
       <h1>{task.id}</h1>
       <h1>{task.title}</h1>
       <h1>{task.HLA}</h1>
+      </div>
       <Button>Download</Button>
     </div>
   );

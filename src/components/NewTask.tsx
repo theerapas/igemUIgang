@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 function NewTask() {
   return (
     <>
-      <h1>Welcome!</h1>
+    <div class = "HomeBox">
+      <h1 class = "InBoxText">Welcome!</h1>
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}
       >
@@ -16,6 +17,7 @@ function NewTask() {
             Create New Task
           </Button>
         </Link>
+      </div>
       </div>
     </>
   );
