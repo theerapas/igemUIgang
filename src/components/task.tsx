@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import { Link } from "react-router-dom";
 
 type Props = {
   task: ITask;
@@ -30,13 +31,19 @@ export const Task: React.FC<Props> = ({ task, removeTask }) => {
           </Typography>
           <br />
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {task.body}
+            {task.HLA}
+          </Typography>
+          <br />
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            {task.filePath}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" variant="outlined">
-            Result
-          </Button>
+          <Link to="/ResultPage" state={{ task: task }}>
+            <Button size="small" variant="outlined">
+              Result
+            </Button>
+          </Link>
           <Button
             size="small"
             variant="outlined"

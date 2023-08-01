@@ -11,9 +11,10 @@ const reducer = (
     switch (action.type) {
       case actionTypes.ADD_TASK:
         const newTask: ITask = {
-          id: Math.random(),
+          id: Date.now(),
           title: action.task.title,
-          body: action.task.body,
+          HLA: action.task.HLA,
+          filePath: action.task.filePath
         }
         return {
           ...state,

@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function NewTask() {
   return (
@@ -7,14 +8,14 @@ function NewTask() {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}
       >
-        <a href="/CreateTaskPage">
+        <Link to="/CreateTaskPage">
           <Button
             variant="contained"
             style={{ color: "white", backgroundColor: "#ab8f4f" }}
           >
             Create New Task
           </Button>
-        </a>
+        </Link>
       </div>
     </>
   );
