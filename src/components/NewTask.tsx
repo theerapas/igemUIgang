@@ -5,7 +5,7 @@ function NewTask() {
   return (
     <>
       <div class="HomeBox">
-        <h1 class="InBoxText">Welcome!</h1>
+        <h1 class="InBoxText">Let's Create New Task!</h1>
         <p>adusfvbhdnjmknijfdbhugfsfjd</p>
         <p>adusfvbhdnjmknijfdbhugfsfjd</p>
         <p>adusfvbhdnjmknijfdbhugfsfjd</p>

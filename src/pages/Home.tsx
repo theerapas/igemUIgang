@@ -4,6 +4,11 @@ import TaskList from "../components/tasklist";
 function MainPage() {
   return (
     <>
+    <div class="Welcome">
+      <h1>
+        WELCOME "USERNAME"
+      </h1>
+    </div>
       <div style={{ display: "flex" }}>
         <div style={{ width: "50%" }}>
           <NewTask />

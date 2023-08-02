@@ -16,6 +16,7 @@ h1,h3{
 
 .HeadTitle h3{
     margin-top: -10px;
+    color: white;
 }
 
 p{
@@ -112,3 +113,9 @@ form {
     color: white;
 }
 
+.Welcome h1{
+    margin-top: 25px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    color:#362d24;
+}

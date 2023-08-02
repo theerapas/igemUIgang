@@ -6,13 +6,12 @@ function Header() {
        <div class="HeadTitle">
       <div class="Img"
         style={{
-          backgroundImage: `url(${banner})`,
+          backgroundImage: `linear-gradient(to top, rgba(54, 45, 36,0.75), rgba(160, 146, 137,0.75)), url(${banner})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           width: "100%",
           height: "150px",
-          padding: "10px",
-          color: "white",
+          padding: "0px",
         }}
       >
         <h1
@@ -20,6 +19,7 @@ function Header() {
             fontSize: 100,
             marginBottom: 0,
             marginTop: 0,
+            color: "white",
           }}
         >
           Peptide Predicting Web
