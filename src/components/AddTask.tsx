@@ -107,13 +107,13 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       </TextField>
       <br />
       <br />
-      <Button variant="contained" component="label">
+      <Button variant="contained" component="label" style={{ color: "#362d24", backgroundColor: "white" }}>
         Upload
         <input hidden accept="*" type="file" onChange={handleFileUpload} />
       </Button>
       <br />
       <br />
-      <Button onClick={handleCancle}>Cancle</Button>
+      <Button onClick={handleCancle} style={{color: "#362d24"}}>Cancle</Button>
       <Button
         type="submit"
         variant="contained"

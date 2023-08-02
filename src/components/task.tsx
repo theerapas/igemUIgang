@@ -23,44 +23,56 @@ export const Task: React.FC<Props> = ({ task, removeTask }) => {
   );
 
   const card = (
+    <div class="Task">
     <React.Fragment>
       <CardActionArea>
+      <div class="TaskContent">
         <CardContent>
           <Typography variant="h5" component="div">
             {task.title}
           </Typography>
           <br />
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <div class="TaskContentDe">
+          <Typography sx={{ mb: 1.5 }}>
             {task.HLA}
           </Typography>
+          </div>
           <br />
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <div class="TaskContentDe">
+          <Typography sx={{ mb: 1.5 }}>
             {task.filePath}
           </Typography>
+          </div>
         </CardContent>
+        </div>
         <CardActions>
           <Link to="/ResultPage" state={{ task: task }}>
-            <Button size="small" variant="outlined">
+          <div class="TaskButton">
+            <Button size="small" variant="contained">
               Result
             </Button>
+          </div>
           </Link>
+          <div class="TaskButton">
           <Button
             size="small"
-            variant="outlined"
+            variant="contained"
             onClick={() => deleteTask(task)}
             color="error"
           >
             Delete
           </Button>
+          </div>
         </CardActions>
       </CardActionArea>
     </React.Fragment>
+    </div>
   );
 
   return (
     <div className="Task">
       <Box sx={{ minWidth: 275, marginTop: 1 }}>
-        <Card variant="outlined">{card}</Card>
+        <Card color="#362d24">{card}</Card>
       </Box>
     </div>
   );
