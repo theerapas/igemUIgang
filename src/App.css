@@ -1,5 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@800&display=swap');
+
 h1,h3{
     font-family: 'Raleway', sans-serif;;
+}
+
+.HeadTitle h1{
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 1px;
+}
+
+.HeadTitle .Img{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.HeadTitle h3{
+    margin-top: -10px;
 }
 
 p{
@@ -19,6 +35,10 @@ p{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.HomeBox h1{
+    font-family: 'Barlow', sans-serif;
+}
+
 .InBoxText{
     color: white;
     text-align: center
@@ -31,6 +51,7 @@ body{
 }
 
 .MainText{
+    font-family: 'Barlow', sans-serif;
     text-align: center;
     color: white;
 }
@@ -87,6 +108,7 @@ form {
 }
 
 .TaskContent{
+    font-family: 'Raleway', sans-serif;;
     color: white;
 }
 

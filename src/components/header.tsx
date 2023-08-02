@@ -3,7 +3,8 @@ import banner from "../assets/banner2.jpg";
 function Header() {
   return (
     <>
-      <div
+       <div class="HeadTitle">
+      <div class="Img"
         style={{
           backgroundImage: `url(${banner})`,
           backgroundSize: "cover",
@@ -16,13 +17,15 @@ function Header() {
       >
         <h1
           style={{
-            fontSize: 50,
+            fontSize: 100,
             marginBottom: 0,
+            marginTop: 0,
           }}
         >
           Peptide Predicting Web
         </h1>
         <h3>From igem group</h3>
+      </div>
       </div>
     </>
   );
