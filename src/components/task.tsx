@@ -70,7 +70,7 @@ export const Task: React.FC<Props> = ({ task, removeTask }) => {
   );
 
   return (
-    <div className="Task">
+    <div>
       <Box sx={{ minWidth: 275, marginTop: 1 }}>
         <Card color="#362d24">{card}</Card>
       </Box>
