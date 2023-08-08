@@ -1,4 +1,5 @@
 import NewTask from "../components/NewTask";
+import BasicTable from "../components/table";
 import TaskList from "../components/tasklist";
 
 function MainPage() {
@@ -9,14 +10,12 @@ function MainPage() {
         WELCOME "USERNAME"
       </h1>
     </div>
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "100%" }}>
           <NewTask />
         </div>
-        <div style={{ width: "50%" }}>
-          <TaskList />
+        <div style={{ width: "100%" }}>
+          <BasicTable />
         </div>
-      </div>
     </>
   );
 }

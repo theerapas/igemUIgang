@@ -17,6 +17,7 @@ type Props = {
 export const AddTask: React.FC<Props> = ({ saveTask }) => {
   const initialTaskState: ITask = {
     id: 0,
+    time: "",
     title: "",
     HLA: "",
     filePath: "",
@@ -113,7 +114,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       </Button>
       <br />
       <br />
-      <Button onClick={handleCancle} style={{color: "#362d24"}}>Cancle</Button>
+      <Button onClick={handleCancle} style={{color: "#362d24"}}>Cancel</Button>
       <Button
         type="submit"
         variant="contained"

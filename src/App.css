@@ -40,6 +40,10 @@ p{
     font-family: 'Barlow', sans-serif;
 }
 
+.CreateButton{
+    text-align: right;
+    margin-right: 10px;
+}
 .InBoxText{
     color: white;
     text-align: center
@@ -118,4 +122,8 @@ form {
     font-weight: bolder;
     margin-bottom: 5px;
     color:#362d24;
+}
+
+.table{
+    margin: 10px;
 }

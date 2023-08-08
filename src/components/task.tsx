@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 
+
 type Props = {
   task: ITask;
   removeTask: (task: ITask) => void;

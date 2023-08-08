@@ -12,7 +12,7 @@ function TaskList() {
   return (
     <>
       <div class = "HomeBox">
-        <h1 class = "InBoxText">Task List</h1>
+        <h1 class = "InBoxText">Tasks</h1>
         {tasks.map((task: ITask) => (
           <Task key={task.id} task={task} removeTask={removeTask} />
         ))}
