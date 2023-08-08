@@ -127,3 +127,9 @@ form {
 .table{
     margin: 10px;
 }
+
+.textButton h2{
+    display: inline-block;
+    margin-right: 10px;
+    font-family: 'Raleway', sans-serif;;
+}

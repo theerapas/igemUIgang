@@ -108,10 +108,48 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       </TextField>
       <br />
       <br />
-      <Button variant="contained" component="label" style={{ color: "#362d24", backgroundColor: "white" }}>
-        Upload
+      <div class = 'textButton'>
+      <h2>upload1</h2>
+      <Button variant="contained" component="label" style={{  color: "#362d24", backgroundColor: "white" }}>
+        Upload 1
         <input hidden accept="*" type="file" onChange={handleFileUpload} />
       </Button>
+      </div>
+      <div class = 'textButton'>
+      <h2>upload2</h2>
+      <Button variant="contained" component="label" style={{  color: "#362d24", backgroundColor: "white" }}>
+        Upload 2
+        <input hidden accept="*" type="file" onChange={handleFileUpload} />
+      </Button>
+      </div>
+      <div class = 'textButton'>
+      <h2>upload3</h2>
+      <Button variant="contained" component="label" style={{ color: "#362d24", backgroundColor: "white" }}>
+        Upload 3
+        <input hidden accept="*" type="file" onChange={handleFileUpload} />
+      </Button>
+      </div>
+      <div class = 'textButton'>
+      <h2>upload4</h2>
+      <Button variant="contained" component="label" style={{ color: "#362d24", backgroundColor: "white" }}>
+        Upload 4
+        <input hidden accept="*" type="file" onChange={handleFileUpload} />
+      </Button>
+      </div>
+      <div class = 'textButton'>
+      <h2>upload5</h2>
+      <Button variant="contained" component="label" style={{ color: "#362d24", backgroundColor: "white" }}>
+        Upload 5
+        <input hidden accept="*" type="file" onChange={handleFileUpload} />
+      </Button>
+      </div>
+      <div class = 'textButton'>
+      <h2>upload6</h2>
+      <Button variant="contained" component="label" style={{ color: "#362d24", backgroundColor: "white" }}>
+        Upload 6
+        <input hidden accept="*" type="file" onChange={handleFileUpload} />
+      </Button>
+      </div>
       <br />
       <br />
       <Button onClick={handleCancle} style={{color: "#362d24"}}>Cancel</Button>

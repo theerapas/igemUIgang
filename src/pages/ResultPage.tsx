@@ -13,7 +13,7 @@ function ResultPage() {
       <h1>{task.title}</h1>
       <h1>{task.HLA}</h1>
       </div>
-      <Button>Download</Button>
+      <Button style={{ color: "#362d24", backgroundColor: "white" }}>Download Predicted Result</Button>
     </div>
   );
 }
