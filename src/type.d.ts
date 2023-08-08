@@ -2,7 +2,7 @@ interface ITask {
     id: number
     title: string
     HLA: string
-    filePath: string
+    fileName: string
   }
   
   type TaskState = {

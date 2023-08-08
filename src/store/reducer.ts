@@ -14,7 +14,7 @@ const reducer = (
           id: Date.now(),
           title: action.task.title,
           HLA: action.task.HLA,
-          filePath: action.task.filePath
+          fileName: action.task.fileName
         }
         return {
           ...state,
