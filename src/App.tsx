@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import CreateTaskPage from "./pages/CreateTaskPage";
 import ResultPage from "./pages/ResultPage";
 import Layout from "./layout";
-import ResultPage2 from "./pages/ResultPage2";
 
 function App() {
   const dispatch: Dispatch<any> = useDispatch();
@@ -31,7 +30,6 @@ function App() {
             <Route index element={<Home />} />
             <Route path="CreateTaskPage" element={<CreateTaskPage />} />
             <Route path="ResultPage" element={<ResultPage />} />
-            <Route path="ResultPage2" element={<ResultPage2 />} />
             <Route path="*" element={<Home />} />
           </Route>
         </Routes>
