@@ -1,5 +1,5 @@
 interface ITask {
-    id: number
+    id: date
     title: string
     HLA: string
     file1: string

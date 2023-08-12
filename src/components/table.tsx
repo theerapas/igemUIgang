@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
 import { Dispatch } from "redux";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
@@ -20,6 +20,7 @@ import LastPageIcon from "@mui/icons-material/LastPage";
 import Box from "@mui/material/Box";
 import TableFooter from "@mui/material/TableFooter";
 import { useTheme } from "@mui/material/styles";
+import { removeTask } from "../store/actionCreators";
 
 function createData(createdDate: string, title: string, HLAtype: string) {
   return { createdDate, title, HLAtype };
@@ -105,20 +106,11 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
   );
 }
 
-const rows = [
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-  createData("18 Aug 2005", "test", "A"),
-];
-
 export default function BasicTable() {
+  const rows: readonly ITask[] = useSelector(
+    (state: TaskState) => state.tasks,
+    shallowEqual
+  );
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -139,6 +131,14 @@ export default function BasicTable() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  const dispatch: Dispatch<any> = useDispatch();
+
+  const deleteTask = React.useCallback(
+    (task: ITask) => dispatch(removeTask(task)),
+    [dispatch, removeTask]
+  );
+
   return (
     <div class="table">
       <TableContainer component={Paper}>
@@ -146,8 +146,11 @@ export default function BasicTable() {
           <TableHead>
             <TableRow>
               <TableCell>Created Date</TableCell>
-              <TableCell align="right">Title</TableCell>
-              <TableCell align="right">HLA Type</TableCell>
+              <TableCell align="left">Title</TableCell>
+              <TableCell align="left">HLA Type</TableCell>
+              <TableCell align="left">Status</TableCell>
+              <TableCell align="right">Delete</TableCell>
+              <TableCell align="right">Result</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -156,16 +159,37 @@ export default function BasicTable() {
               : rows
             ).map((row) => (
               <TableRow
-                key={row.createdDate}
+                key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.createdDate}
+                  {new Date(row.id).toLocaleString()}
                 </TableCell>
-                <TableCell align="right">{row.title}</TableCell>
-                <TableCell align="right">{row.HLAtype}</TableCell>
-                <TableCell>
-                  <Button>HELLO</Button>
+                <TableCell align="left">{row.title}</TableCell>
+                <TableCell align="left">{row.HLA}</TableCell>
+                <TableCell align="left">STATUS</TableCell>
+                <TableCell align="right">
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      let text = "Are you sure?";
+                      if (confirm(text) == true) {
+                        deleteTask(row);
+                      }
+                    }}
+                    color="error"
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+                <TableCell align="right">
+                  <Link to="/ResultPage" state={{ task: row }}>
+                    <div class="TaskButton">
+                      <Button size="small" variant="contained">
+                        Result
+                      </Button>
+                    </div>
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}
