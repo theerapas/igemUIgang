@@ -17,10 +17,15 @@ type Props = {
 export const AddTask: React.FC<Props> = ({ saveTask }) => {
   const initialTaskState: ITask = {
     id: 0,
-    time: "",
+    // time: "",
     title: "",
     HLA: "",
-    filePath: "",
+    file1: "",
+    file2: "",
+    file3: "",
+    file4: "",
+    file5: "",
+    file6: "",
   };
 
   const [task, setTask] = React.useState<ITask>(initialTaskState);
@@ -61,7 +66,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     reader.onloadend = () => {
       //console.log(file);
       setImageUrl(reader.result);
-      task.fileName = file.name;
+      task.file1 = file.name;
     };
 
     reader.readAsDataURL(file);
@@ -108,7 +113,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       </TextField>
       <br />
       <br />
-      <div class="textButton">
+      <div className="textButton">
         <h2>upload1</h2>
         <Button
           variant="contained"
@@ -119,7 +124,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
           <input hidden accept="*" type="file" onChange={handleFileUpload} />
         </Button>
       </div>
-      <div class="textButton">
+      <div className="textButton">
         <h2>upload2</h2>
         <Button
           variant="contained"
@@ -130,7 +135,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
           <input hidden accept="*" type="file" onChange={handleFileUpload} />
         </Button>
       </div>
-      <div class="textButton">
+      <div className="textButton">
         <h2>upload3</h2>
         <Button
           variant="contained"
@@ -141,7 +146,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
           <input hidden accept="*" type="file" onChange={handleFileUpload} />
         </Button>
       </div>
-      <div class="textButton">
+      <div className="textButton">
         <h2>upload4</h2>
         <Button
           variant="contained"
@@ -152,7 +157,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
           <input hidden accept="*" type="file" onChange={handleFileUpload} />
         </Button>
       </div>
-      <div class="textButton">
+      <div className="textButton">
         <h2>upload5</h2>
         <Button
           variant="contained"
@@ -163,7 +168,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
           <input hidden accept="*" type="file" onChange={handleFileUpload} />
         </Button>
       </div>
-      <div class="textButton">
+      <div className="textButton">
         <h2>upload6</h2>
         <Button
           variant="contained"
@@ -182,7 +187,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       <Button
         type="submit"
         variant="contained"
-        disabled={task.title === "" || task.fileName === ""}
+        disabled={task.title === "" || task.file1 === ""}
         style={{ color: "white", backgroundColor: "#362d24" }}
       >
         Create new task
