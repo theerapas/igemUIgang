@@ -1,13 +1,13 @@
 interface ITask {
     id: date
-    title: string
-    HLA: string
-    file1: string
-    file2: string
-    file3: string
-    file4: string
-    file5: string
-    file6: string
+    name: string
+    create_at: string
+    germ_line_forward_dna: string
+    germ_line_reverse_dna: string
+    somatic_line_forward_dna: string
+    somatic_line_reverse_dna: string
+    hla_type: string
+    result: dict
   }
   
   type TaskState = {

@@ -18,15 +18,14 @@ type Props = {
 export const AddTask: React.FC<Props> = ({ saveTask }) => {
   const initialTaskState: ITask = {
     id: 0,
-    // time: "",
-    title: "",
-    HLA: "",
-    file1: "",
-    file2: "",
-    file3: "",
-    file4: "",
-    file5: "",
-    file6: "",
+    name: "",
+    create_at: "",
+    germ_line_forward_dna: "",
+    germ_line_reverse_dna: "",
+    somatic_line_forward_dna: "",
+    somatic_line_reverse_dna: "",
+    hla_type: "",
+    result: { "": "" },
   };
 
   const [task, setTask] = React.useState<ITask>(initialTaskState);
@@ -59,7 +58,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
 
   const handleTextInputChange = (event) => {
     setTextInput(event.target.value);
-    task.HLA = event.target.value;
+    task.hla_type = event.target.value;
   };
 
   const handleCancle = () => {
@@ -79,7 +78,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       formData.append("file", selectedFile);
       setLoading1("loading");
       axios
-        .post("http://localhost:5000/upload1", formData)
+        .post("http://localhost:3000/sequence", formData)
         .then((response) => {
           console.log(response.data);
           setLoading1("done");
@@ -91,7 +90,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     }
     const reader = new FileReader();
     reader.onloadend = () => {
-      task.file1 = selectedFile.name;
+      task.germ_line_forward_dna = selectedFile.name;
       setFilename1(selectedFile.name);
     };
     reader.readAsDataURL(selectedFile);
@@ -103,7 +102,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
       formData.append("file", selectedFile);
       setLoading2("loading");
       axios
-        .post("http://localhost:5000/upload2", formData)
+        .post("http://localhost:3000/sequence", formData)
         .then((response) => {
           console.log(response.data);
           setLoading2("done");
@@ -115,7 +114,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     }
     const reader = new FileReader();
     reader.onloadend = () => {
-      task.file2 = selectedFile.name;
+      task.germ_line_reverse_dna = selectedFile.name;
       setFilename2(selectedFile.name);
     };
     reader.readAsDataURL(selectedFile);
@@ -125,7 +124,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     const reader = new FileReader();
     reader.onloadend = () => {
       //console.log(file);
-      task.file3 = file.name;
+      task.somatic_line_forward_dna = file.name;
       setFilename3(file.name);
     };
     reader.readAsDataURL(file);
@@ -135,7 +134,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     const reader = new FileReader();
     reader.onloadend = () => {
       //console.log(file);
-      task.file4 = file.name;
+      task.somatic_line_reverse_dna = file.name;
       setFilename4(file.name);
     };
     reader.readAsDataURL(file);
@@ -145,7 +144,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     const reader = new FileReader();
     reader.onloadend = () => {
       //console.log(file);
-      task.file5 = file.name;
+      task.hla_type = file.name;
       setFilename5(file.name);
     };
     reader.readAsDataURL(file);
@@ -155,7 +154,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
     const reader = new FileReader();
     reader.onloadend = () => {
       //console.log(file);
-      task.file6 = file.name;
+      task.result = file.name;
       setFilename6(file.name);
     };
     reader.readAsDataURL(file);
@@ -167,7 +166,7 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
         id="title"
         label="Title"
         variant="outlined"
-        value={task.title}
+        value={task.name}
         onChange={handleTaskData}
       />
       <br />
