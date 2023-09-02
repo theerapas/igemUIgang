@@ -10,14 +10,28 @@ import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import reducer from "./store/reducer";
+import axios from "axios";
 
 const store: Store<TaskState, TaskAction> & {
   dispatch: DispatchType;
 } = createStore(reducer, applyMiddleware(thunk));
 
+const getData = () => {
+  axios
+    .get("https://api.qoutable.io/random")
+    // .get("http://localhost:3000/prediction")
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
+      <button onClick={getData}>Test get data</button>
       <App />
     </Provider>
   </React.StrictMode>
