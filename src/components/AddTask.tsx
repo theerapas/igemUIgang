@@ -19,13 +19,11 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
   const initialTaskState: ITask = {
     id: 0,
     name: "",
-    create_at: "",
     germ_line_forward_dna: "",
     germ_line_reverse_dna: "",
     somatic_line_forward_dna: "",
     somatic_line_reverse_dna: "",
     hla_type: "",
-    result: { "": "" },
   };
 
   const [task, setTask] = React.useState<ITask>(initialTaskState);
