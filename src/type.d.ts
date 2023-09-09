@@ -1,7 +1,8 @@
 interface ITask {
-    id: date
+    id: string
     name: string
-    create_at: string
+    created_at: string
+    status: string
     germ_line_forward_dna: string
     germ_line_reverse_dna: string
     somatic_line_forward_dna: string

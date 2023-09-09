@@ -161,21 +161,14 @@ export const AddTask: React.FC<Props> = ({ saveTask }) => {
   return (
     <form onSubmit={addNewTask} className="Add-task">
       <TextField
-        id="title"
+        id="name"
         label="Title"
         variant="outlined"
-        value={task.name}
+        //value={task.name}
         onChange={handleTaskData}
       />
       <br />
       <br />
-      {/* <TextField
-        id="body"
-        label="Description"
-        variant="outlined"
-        value={task.body}
-        onChange={handleTaskData}
-      /> */}
       <TextField
         id="HLA"
         select

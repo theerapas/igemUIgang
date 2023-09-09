@@ -8,7 +8,10 @@ function CreateTaskPage() {
   const dispatch: Dispatch<any> = useDispatch();
 
   const saveTask = React.useCallback(
-    (task: ITask) => dispatch(addTask(task)),
+    (task: ITask) => {
+      dispatch(addTask(task));
+      console.log(task);
+    },
     [dispatch]
   );
 
