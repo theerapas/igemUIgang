@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,7 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
-import { Dispatch } from "redux";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -20,11 +19,9 @@ import LastPageIcon from "@mui/icons-material/LastPage";
 import Box from "@mui/material/Box";
 import TableFooter from "@mui/material/TableFooter";
 import { useTheme } from "@mui/material/styles";
-import { removeTask } from "../store/actionCreators";
-
-function createData(createdDate: string, title: string, HLAtype: string) {
-  return { createdDate, title, HLAtype };
-}
+import { ITask } from "../store/type";
+import { TaskState } from "../store/reducers";
+import { getTasks } from "../store/action";
 
 interface TablePaginationActionsProps {
   count: number;
@@ -107,10 +104,27 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
 }
 
 export default function BasicTable() {
-  const rows: readonly ITask[] = useSelector(
-    (state: TaskState) => state.tasks,
-    shallowEqual
-  );
+  let dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getTasks());
+  // }, [dispatch]);
+
+  const rows = useSelector((state: TaskState) => state.tasks);
+  const loading = useSelector((state: TaskState) => state.loading);
+  const error = useSelector((state: TaskState) => state.error);
+
+  const handleDelete = (id: string) => {
+    dispatch(deleteTask(id));
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error</div>;
+  }
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -132,13 +146,6 @@ export default function BasicTable() {
     setPage(0);
   };
 
-  const dispatch: Dispatch<any> = useDispatch();
-
-  const deleteTask = React.useCallback(
-    (task: ITask) => dispatch(removeTask(task)),
-    [dispatch, removeTask]
-  );
-
   return (
     <div class="table">
       <TableContainer component={Paper}>
@@ -148,7 +155,6 @@ export default function BasicTable() {
               <TableCell>Created Date</TableCell>
               <TableCell align="left">Title</TableCell>
               <TableCell align="left">HLA Type</TableCell>
-              <TableCell align="left">Status</TableCell>
               <TableCell align="right">Delete</TableCell>
               <TableCell align="right">Result</TableCell>
             </TableRow>
@@ -165,16 +171,15 @@ export default function BasicTable() {
                 <TableCell component="th" scope="row">
                   {new Date(row.id).toLocaleString()}
                 </TableCell>
-                <TableCell align="left">{row.title}</TableCell>
-                <TableCell align="left">{row.HLA}</TableCell>
-                <TableCell align="left">STATUS</TableCell>
+                <TableCell align="left">{row.name}</TableCell>
+                <TableCell align="left">{row.hla_type}</TableCell>
                 <TableCell align="right">
                   <Button
                     variant="contained"
                     onClick={() => {
                       let text = "Are you sure?";
                       if (confirm(text) == true) {
-                        deleteTask(row);
+                        handleDelete(row.id);
                       }
                     }}
                     color="error"

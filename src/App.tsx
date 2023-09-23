@@ -1,12 +1,6 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
-import { AddTask } from "./components/AddTask";
-import { addTask, removeTask } from "./store/actionCreators";
-import { Dispatch } from "redux";
 import Header from "./components/header";
-import NewTask from "./components/NewTask";
 import "./App.css";
-import TaskList from "./components/tasklist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateTaskPage from "./pages/CreateTaskPage";
@@ -14,13 +8,6 @@ import ResultPage from "./pages/ResultPage";
 import Layout from "./layout";
 
 function App() {
-  const dispatch: Dispatch<any> = useDispatch();
-
-  const saveTask = React.useCallback(
-    (task: ITask) => dispatch(addTask(task)),
-    [dispatch]
-  );
-
   return (
     <>
       <Header />
