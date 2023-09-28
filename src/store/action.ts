@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { ITask, GET_TASKS, GET_TASK, ADD_TASK, DELETE_TASK, TASKS_ERROR, SET_LOADING } from './type';
 import { PredictionTaskInput } from './type';
 
-export const API_URL = 'http://localhost:8000';
+export const API_URL = 'http://ec2-54-169-24-141.ap-southeast-1.compute.amazonaws.com:8000';
 
 export const setLoading = () => {
     return {
