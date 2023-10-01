@@ -1,7 +1,5 @@
 import NewTask from "../components/NewTask";
 import BasicTable from "../components/table";
-import TaskList from "../components/tasklist";
-import { useState } from "react";
 
 function MainPage() {
   return (
