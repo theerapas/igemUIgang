@@ -15,7 +15,9 @@ export const getTasks = () => async (dispatch: Dispatch) => {
     dispatch(setLoading());
     try {
         const response = await axios.get<ITask[]>(API_URL + "/prediction");
-        let temp = response
+        let temp = response.data
+        console.log("GET TASK!!!");
+        console.log(temp);
         dispatch({
             type: GET_TASKS,
             payload: temp
@@ -32,7 +34,7 @@ export const getTask = (id: number) => async (dispatch: Dispatch) => {
     dispatch(setLoading());
     try {
         const response = await axios.get<ITask>(`${API_URL}/prediction/${id}`);
-        let temp = response
+        let temp = response.data
         dispatch({
             type: GET_TASK,
             payload: temp
@@ -48,8 +50,8 @@ export const getTask = (id: number) => async (dispatch: Dispatch) => {
 export const addTask = (task: PredictionTaskInput) => async (dispatch: Dispatch) => {
     dispatch(setLoading());
     try {
-        const response = await axios.post<ITask>(API_URL, task);
-        let temp = response
+        const response = await axios.post<ITask>(API_URL + "/prediction", task);
+        let temp = response.data
         dispatch({
             type: ADD_TASK,
             payload: temp

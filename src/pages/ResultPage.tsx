@@ -18,15 +18,13 @@ function ResultPage() {
     <div className="Result">
       <h1>Result is here!</h1>
       <div className="ResultDetail">
-        <h1>{new Date(task.id).toLocaleString()}</h1>
-        <h1>{task.title}</h1>
-        <h1>{task.HLA}</h1>
-        <h1>{task.file1}</h1>
-        <h1>{task.file2}</h1>
-        <h1>{task.file3}</h1>
-        <h1>{task.file4}</h1>
-        <h1>{task.file5}</h1>
-        <h1>{task.file6}</h1>
+        <h1>{new Date(task.created_at).toLocaleString()}</h1>
+        <h1>{task.name}</h1>
+        <h1>{task.hla_type}</h1>
+        <h1>{task.germ_line_forward_dna}</h1>
+        <h1>{task.germ_line_reverse_dna}</h1>
+        <h1>{task.somatic_line_forward_dna}</h1>
+        <h1>{task.somatic_line_reverse_dna}</h1>
       </div>
       <Button style={{ color: "#362d24", backgroundColor: "white" }}>
         Download Predicted Result

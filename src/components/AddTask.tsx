@@ -32,17 +32,8 @@ export const AddTask: React.FC<any> = () => {
   const [filename2, setFilename2] = React.useState("");
   const [filename3, setFilename3] = React.useState("");
   const [filename4, setFilename4] = React.useState("");
-  const [filename5, setFilename5] = React.useState("");
 
   const navigate = useNavigate();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    dispatch(addTask(task));
-    setTask(initialTaskState); // Reset the form fields to their initial state
-    console.log("NEW TASK ADD!");
-    navigate("/home");
-  };
 
   const handleNameInput = (e: React.FormEvent<HTMLInputElement>) => {
     setTask({
@@ -69,13 +60,12 @@ export const AddTask: React.FC<any> = () => {
   const [loading2, setLoading2] = useState("");
   const [loading3, setLoading3] = useState("");
   const [loading4, setLoading4] = useState("");
-  const [loading5, setLoading5] = useState("");
 
   const handleFile1Upload = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("sequence_file", selectedFile);
       setLoading1("loading");
       axios
         .post(API_URL + "/sequence", formData)
@@ -83,7 +73,7 @@ export const AddTask: React.FC<any> = () => {
           console.log(response);
           setTask({
             ...task,
-            germ_line_forward_dna: selectedFile.filepath,
+            germ_line_forward_dna: response.data.filepath,
           });
           setLoading1("done");
         })
@@ -94,7 +84,7 @@ export const AddTask: React.FC<any> = () => {
     }
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFilename1(selectedFile.filepath);
+      setFilename1(selectedFile.name);
     };
     reader.readAsDataURL(selectedFile);
   };
@@ -102,7 +92,7 @@ export const AddTask: React.FC<any> = () => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("sequence_file", selectedFile);
       setLoading2("loading");
       axios
         .post(API_URL + "/sequence", formData)
@@ -110,7 +100,7 @@ export const AddTask: React.FC<any> = () => {
           console.log(response);
           setTask({
             ...task,
-            germ_line_reverse_dna: selectedFile.filepath,
+            germ_line_reverse_dna: response.data.filepath,
           });
           setLoading2("done");
         })
@@ -121,7 +111,7 @@ export const AddTask: React.FC<any> = () => {
     }
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFilename2(selectedFile.filepath);
+      setFilename2(selectedFile.name);
     };
     reader.readAsDataURL(selectedFile);
   };
@@ -129,7 +119,7 @@ export const AddTask: React.FC<any> = () => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("sequence_file", selectedFile);
       setLoading3("loading");
       axios
         .post(API_URL + "/sequence", formData)
@@ -137,7 +127,7 @@ export const AddTask: React.FC<any> = () => {
           console.log(response);
           setTask({
             ...task,
-            somatic_line_forward_dna: selectedFile.filepath,
+            somatic_line_forward_dna: response.data.filepath,
           });
           setLoading3("done");
         })
@@ -148,7 +138,7 @@ export const AddTask: React.FC<any> = () => {
     }
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFilename3(selectedFile.filepath);
+      setFilename3(selectedFile.name);
     };
     reader.readAsDataURL(selectedFile);
   };
@@ -156,7 +146,7 @@ export const AddTask: React.FC<any> = () => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("sequence_file", selectedFile);
       setLoading4("loading");
       axios
         .post(API_URL + "/sequence", formData)
@@ -164,7 +154,7 @@ export const AddTask: React.FC<any> = () => {
           console.log(response);
           setTask({
             ...task,
-            somatic_line_reverse_dna: selectedFile.filepath,
+            somatic_line_reverse_dna: response.data.filepath,
           });
           setLoading4("done");
         })
@@ -175,36 +165,17 @@ export const AddTask: React.FC<any> = () => {
     }
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFilename4(selectedFile.filepath);
+      setFilename4(selectedFile.name);
     };
     reader.readAsDataURL(selectedFile);
   };
-  const handleFile5Upload = (event) => {
-    const selectedFile = event.target.files[0];
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-      setLoading5("loading");
-      axios
-        .post(API_URL + "/sequence", formData)
-        .then((response) => {
-          console.log(response);
-          setTask({
-            ...task,
-            hla_type: selectedFile.filepath,
-          });
-          setLoading5("done");
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error);
-          setLoading5("error");
-        });
-    }
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setFilename1(selectedFile.filepath);
-    };
-    reader.readAsDataURL(selectedFile);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(addTask(task));
+    setTask(initialTaskState); // Reset the form fields to their initial state
+    console.log("NEW TASK ADD!");
+    navigate("/home");
   };
 
   return (
@@ -242,71 +213,57 @@ export const AddTask: React.FC<any> = () => {
       <br />
       <br />
       <div className="textButton">
-        <h2>upload1</h2>
+        <h2>germline forward dna</h2>
         <Button
           variant="contained"
           component="label"
           style={{ color: "#362d24", backgroundColor: "white" }}
         >
-          Upload 1
+          Upload
           <input hidden accept="*" type="file" onChange={handleFile1Upload} />
         </Button>
         <p>{loading1}</p>
         <p>{filename1}</p>
       </div>
       <div className="textButton">
-        <h2>upload2</h2>
+        <h2>germline reverse dna</h2>
         <Button
           variant="contained"
           component="label"
           style={{ color: "#362d24", backgroundColor: "white" }}
         >
-          Upload 2
+          Upload
           <input hidden accept="*" type="file" onChange={handleFile2Upload} />
         </Button>
         <p>{loading2}</p>
         <p>{filename2}</p>
       </div>
       <div className="textButton">
-        <h2>upload3</h2>
+        <h2>somaticline forward dna</h2>
         <Button
           variant="contained"
           component="label"
           style={{ color: "#362d24", backgroundColor: "white" }}
         >
-          Upload 3
+          Upload
           <input hidden accept="*" type="file" onChange={handleFile3Upload} />
         </Button>
         <p>{loading3}</p>
         <p>{filename3}</p>
       </div>
       <div className="textButton">
-        <h2>upload4</h2>
+        <h2>somaticline reverse dna</h2>
         <Button
           variant="contained"
           component="label"
           style={{ color: "#362d24", backgroundColor: "white" }}
         >
-          Upload 4
+          Upload
           <input hidden accept="*" type="file" onChange={handleFile4Upload} />
         </Button>
         <p>{loading4}</p>
         <p>{filename4}</p>
       </div>
-      <div className="textButton">
-        <h2>upload5</h2>
-        <Button
-          variant="contained"
-          component="label"
-          style={{ color: "#362d24", backgroundColor: "white" }}
-        >
-          Upload 5
-          <input hidden accept="*" type="file" onChange={handleFile5Upload} />
-        </Button>
-        <p>{loading5}</p>
-        <p>{filename5}</p>
-      </div>
-      <br />
       <br />
       <Button onClick={handleCancle} style={{ color: "#362d24" }}>
         Cancel
